@@ -13,7 +13,7 @@ class PredictPipeline:
             modelPath=os.path.join("artifacts","model.pkl")
             preprocessorPath=os.path.join("artifacts","preprocessor.pkl")
             logging.info("loading model and preprocessor")
-            model=loadObject(fielPath=modelPath)
+            model=loadObject(filePath=modelPath)
             preprocessor=loadObject(filePath=preprocessorPath)
             transformedData=preprocessor.transform(features)
             prediction=model.predict(transformedData)
@@ -44,13 +44,13 @@ class CustomData:
     def createDataFrame(self):
         try:
             data={
-                "gender": self.gender,
-                "race/ethnicity": self.race_ethnicity,
-                "parental level of education": self.parental_level_of_education,
-                "lunch": self.lunch,
-                "test preparation course": self.test_preparation_course,
-                "reading score": self.reading_score,
-                "writing score": self.writing_score
+                "gender": [self.gender],
+                "race/ethnicity": [self.race_ethnicity],
+                "parental level of education": [self.parental_level_of_education],
+                "lunch": [self.lunch],
+                "test preparation course": [self.test_preparation_course],
+                "reading score": [self.reading_score],
+                "writing score": [self.writing_score]
             }
             return pd.DataFrame(data)
         
